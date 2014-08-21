@@ -38,3 +38,5 @@ class Teaser(CMSPlugin):
         return self.title
     
     search_fields = ('description',)
+
+    css_class = models.CharField(_("class"), max_length=255, blank=True, null=True)

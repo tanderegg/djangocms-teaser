@@ -1,11 +1,15 @@
 {% load i18n %}
-<h2>{{ object.title|title }}</h2>
+<div class="teaser{% if object.css_class %} {{ object.css_class }}{% endif %}">
+<h2 class="teaser-title">{{ object.title|title }}</h2>      
+<div class="teaser-content">
 {% if object.image %}
-	{% if link %}<a href="{{ link }}">{% endif %}
-		<img src="{{ object.image.url }}" alt="{{ object.title }}"/>
+	{% if link %}<a class="teaser-image-link" href="{{ link }}">{% endif %}
+		<img class="teaser-image" src="{{ object.image.url }}" alt="{{ object.title }}"/>
 	{% if link %}</a>{% endif %}
 {% endif %}
 {% if object.description %}
-<p>{{ object.description }}</p>
+<div class="teaser-description">{{ object.description|linebreaks }}</div>
 {% endif %}
-{% if link %}<a href="{{ link }}">{% trans "more" %} &#187;</a>{% endif %}
+{% if link %}<a class="teaser-more-link" href="{{ link }}">{% trans "more" %} &#187;</a>{% endif %}
+</div>
+</div>
